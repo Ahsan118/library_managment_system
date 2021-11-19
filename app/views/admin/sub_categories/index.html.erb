@@ -1,0 +1,26 @@
+<h1>Subcategory</h1>
+<button class="btn btn-primary btn-lg fa fa-plus-circle fa-2x"><%= link_to "Add new subcatagerie", new_admin_sub_category_path(category: @category), style: "color: white;text-decoration:none;"  %></button><br><br> 
+<table class="table table-hover">
+	<thead>
+		<tr><th> Title</th>
+			<th >Action</th>
+			<th>Books</th>
+		</tr>
+	</thead>
+<tbody>
+	<% @sub.each do |catagerie|%>
+	<tr>
+	<td><%= catagerie.subcat%></td>
+	<td><%= link_to "", edit_admin_sub_category_path(catagerie,category: @category.id),:class => 'btn btn-info fa fa-pencil-square-o'%>
+		<%= link_to "" ,admin_sub_category_path(catagerie), method: :delete ,data: {confirm: "are you sure to delete data"},:class => 'btn btn-danger fa fa-trash-o fa-lg' %>
+	</td>	
+	<td> <%= link_to "Add Books of #{catagerie.subcat}",  admin_books_path(sub_id: catagerie),:class => 'btn btn-warning' %></td>
+	</tr>
+
+<%end%>
+</tbody>
+
+</table>
+<%= will_paginate @sub , renderer: BootstrapPagination::Rails %>
+<br>
+<%= link_to "back_to_category",admin_categories_path  %>

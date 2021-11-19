@@ -1,0 +1,53 @@
+<table  class="table table-hover">
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Sub Category</th>
+      <th>Title</th>
+      <th>Action</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <% @books.each do |book|%>
+      <tr>
+        <td> <%= book.sub_category.category.title %></td>
+        <td> <%= book.sub_category.subcat %></td>
+        <td><%= book.book_title %></td>
+              <% if book.book_requests.request.where( user_id: current_user ).present? %>
+                <td> <%= link_to "Cancel", student_dashboard_path(book),method: :delete ,data: {confirm: "Are you sure to cancel request??"},:class => 'btn btn-danger' %></td>
+              <% elsif book.book_requests.approve.where( user_id: current_user ).present? %>
+                <td class="btn btn-success">Approved </td>
+              <% elsif book.book_requests.rejected.where( user_id: current_user ).present? %>
+                <td><%= link_to "Request Again", book_request_student_dashboard_path(book),:class => 'btn btn-danger' %></td>
+              <% else %>
+              <td> <%= link_to "Request", book_request_student_dashboard_path(book),:class => 'btn btn-primary' %></td>
+              <td>
+                
+                  <div class="row">
+                    <div class="small-2 large-2 columns">
+                      <%= imdb_style_rating_for book, current_user%>
+                    </div>
+                    <br>
+                    <div class="small-2 large-4 columns">
+                      <% if current_user %>
+                        Visual Effects: <%= rating_for book, "visual_effects" %>
+                        
+                      <% end %>
+                    </div>
+                  </div>
+
+
+
+
+              </td>
+              <% end %>
+      </tr>
+
+    <%end%>
+  </tbody>
+
+</table>
+
+ 

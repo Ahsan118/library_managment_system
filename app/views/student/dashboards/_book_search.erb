@@ -1,0 +1,37 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th> Title</th>
+      <th >Books</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @category.each do |category|%>
+      <tr>
+        <td ><%= category.subcat%></td>
+
+            <% category.books.where(status:'Active').each do |book| %>
+          <tr>
+            <td></td>
+              <td><%= book.book_title %></td>
+              <% if book.book_requests.request.where( user_id: current_user ).present? %>
+
+                <td> <%= link_to "Cancel", student_dashboard_path(book),method: :delete ,data: {confirm: "Are you sure to cancel request??"},:class => 'btn btn-danger' %></td>
+
+              <% elsif book.book_requests.approve.where( user_id: current_user ).present? %>
+
+                <td class="btn btn-success"> Approved  </td>
+
+              <% elsif book.book_requests.rejected.where( user_id: current_user ).present? %>
+                <td> <%= link_to "Request Again", book_request_student_dashboard_path(book),:class => 'btn btn-danger' %></td>
+              <% else %>
+              <td > <%= link_to "Request", book_request_student_dashboard_path(book),:class => 'btn btn-info'%></td>
+              <% end %>
+          </tr>
+            <% end %>
+
+      </tr>
+    <%end%>
+  </tbody>
+</table>

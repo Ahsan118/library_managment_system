@@ -1,0 +1,58 @@
+<h1>Welcome Students</h1>
+<div class="row">
+  <div class="col-md-4">
+    <h2>Category</h2>
+    <i class="fa fa-list" aria-hidden="true"></i>
+    <h2><%= @count%></h2>
+  </div>
+  <div class="col-md-4">
+    <h2>SubCategory</h2>
+    <i class="fa fa fa-indent" aria-hidden="true"></i>
+    <h2><%= @sub_category%></h2>
+  </div>
+  <div class="col-md-4">
+    <h2>Books</h2>
+    <i class="fa fa-book" aria-hidden="true"></i>
+    <h2><%= @book%></h2>
+    
+  </div>
+</div>
+<!-- <button class="btn btn-danger btn-lg"> <%= link_to 'sign out', destroy_user_session_path, method: :delete, style: "color:white; text-decoration:none"%></button><br><br>
+<button class="btn btn-primary btn-lg"><%= link_to "Show all Categories", show_categories_student_dashboards_path, style: "color: white;text-decoration:none;font-size: 22px;font-weight: bold;" %></button> <br><br>
+<button class="btn btn-primary btn-lg"><%= link_to "Show all books", show_books_student_dashboards_path, style: "color: white;text-decoration:none;font-size: 22px;font-weight: bold;" %></button> <br><br> 
+ -->
+
+<style type="text/css">
+  body, html{
+    height: 100%;
+    /*margin: 0;*/
+    /*margin-top: -11px;*/
+    background-image:url('http://localhost:3000/assets/img2-8622d2cf0d6364525eab85b0cad1e1017e4745ea18a164c2524877e4445be5ff.png');
+    /*height: 100%;*/
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+  h1{
+    color: white;
+    font-family:serif;
+    font-weight: bold;
+  }
+  .col-md-4{
+    background-color: #343a40;
+    border: 1px solid white;
+    text-align: center;
+    border-radius: 5px;
+    padding: 100px;
+    opacity: 0.8;
+  }
+  .fa{
+    font-size: 8em; 
+    color: white;
+    padding: 5px 0px;
+  }
+  h2{
+    color: white;
+  }
+</style>

@@ -1,0 +1,39 @@
+<div class="table-responsive">
+<table class="table table-hover">
+  <thead>
+    <tr><th> User Name</th>
+      <th>Book Title</th>
+      <th> Status</th>
+      <th colspan="2">Action</th>
+    </tr>
+  </thead>
+<tbody>
+  <% @requests.each do |request|%>
+  <tr>
+  <td><%= request.user.email %></td>
+  <td><%= request.book.book_title %></td>
+  <td><%= request.status %></td>
+  <% if request.status == 'approve' || request.status == 'rejected'%>
+  <td><button class="btn btn-warning"> 
+    You Perform Your Action
+  </button></td>
+  <%else%>
+
+  <td><button class="btn btn-danger"> 
+    <%= link_to "Rejected",reject_admin_request_path(request),class: "fa fa-times",style: "color: white;text-decoration:none;" %>
+
+  </button>
+<button  class="btn btn-success">
+  <%= link_to "Approved",approved_admin_request_path(request),class: "fa fa-check-circle" ,style: "color: white;text-decoration:none;" %>
+  
+  </button>
+</td>
+  <% end -%>
+  </tr>
+
+<%end%>
+</tbody>
+
+</table>
+
+</div>

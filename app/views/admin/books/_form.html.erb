@@ -1,0 +1,12 @@
+<%= form_for [:admin, @books] do |book| %>
+<div class="row">
+<div class="col-md-3" style="display: -webkit-inline-box;">	
+ <%= book.label :Add_book%>
+ <%= book.text_field :book_title , class: "form-control"%>
+ <%= book.select :status, options_for_select(["Active" , "InActive"])%>
+ <%= book.hidden_field :sub_category_id , value: @sub_category.id%>
+ <%= book.submit  :class => 'btn btn-primary' %>
+ </div>
+</div>
+
+<%end%>

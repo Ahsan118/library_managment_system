@@ -1,0 +1,20 @@
+<h1>Sub Category</h1>
+
+<!-- <button class="btn btn-primary" >
+  <%= link_to "back to Home",student_dashboards_path, style: "color:white;text-decoration:none;"  %></button><br><br>  -->
+<div class = "row">
+  <div class="col-md-6"></div>
+  <div class="col-md-6" style="display: inherit;"><%= text_field_tag :text1 , nil , placeholder: "Search" ,class: "form-control col-md-5" %>
+<button class="btn btn-primary" id="btn1">Search</button></div>
+
+</div>
+ <br><br>
+<div class="result">
+  <%= render "book_search"%>
+</div>
+<%= will_paginate @category,renderer: BootstrapPagination::Rails %>
+<style type="text/css">
+	body{
+		background-color: #B9B8B8;
+	}
+</style>

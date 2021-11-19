@@ -1,0 +1,9 @@
+<h1>Requests</h1>
+<% @test = BookRequest.statuses.map{|d|d.delete_at(0) }%>
+<% @test.delete("pending")%>
+<%= select_tag "select" , options_for_select(@test), class: "form-control col-sm-5" %> <br>
+<div class="requests" >
+  <%= render "book_requests" %>
+</div>
+
+<%= will_paginate @requests ,renderer: BootstrapPagination::Rails %>

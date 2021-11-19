@@ -1,0 +1,31 @@
+<center><h1>All Books</h1></center>
+
+<!-- <button class="btn btn-primary" >
+    <%= link_to "back to Home",student_dashboards_path, style: "color: white;text-decoration:none;"  %>
+</button><br><br>  -->
+<div class="row">
+  <div class="col-md-4">
+<!--     <%= label_tag "Category"%>
+    <%= select_tag "drop1" , options_for_select(Category.all.map{ |e| [e.title, e.id]}),class: "form-control"  %> -->
+  </div>
+  <div class="col-md-4">
+ <!--    <%= label_tag "SubCategory"%>
+    <%= select_tag "ahsan" , options_for_select(["select subcategory"]) ,class: "form-control"  %> -->
+  </div>
+  <div class="col-md-4" style="padding-top: 2.8%;"><%= text_field_tag :text2 , nil , placeholder: "Search" ,class: "form-control", style:"display: inline-block !important; width: 75% !important; " %>
+      <button class="btn btn-primary" id="btn2">Search</button>
+  </div>
+</div>
+<br>
+
+<div class="table_result">
+  <%= render "book_table"%>
+</div>
+
+<%= will_paginate @books,renderer: BootstrapPagination::Rails %>
+
+<style type="text/css">
+  body{
+    background-color: #B9B8B8;
+  }
+</style>

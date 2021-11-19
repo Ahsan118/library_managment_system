@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Library</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
+  </head>
+
+  <body>
+    <% if current_user.present? %>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+  <a class="navbar-brand" href="#">
+    <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/logo_white.png" width="30" height="30" alt="logo">
+    Online Library 
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list-2" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbar-list-2">
+    <ul class="navbar-nav">
+      <% if current_user.student?%>
+      <li class="nav-item active">
+        <%= link_to "Home", student_dashboards_path,class: "nav-link" %>
+        <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
+      </li>
+      <li class="nav-item">
+        <%= link_to "Categories", show_categories_student_dashboards_path,class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Books", show_books_student_dashboards_path,class: "nav-link" %>
+        <!-- <a class="nav-link" href="#">Books</a> -->
+      </li>
+      <li class="nav-item" style="margin-left: 700px;">
+    
+
+      <%= link_to 'Logout', logout_student_dashboards_path,remote: true, class: 'btn btn-danger btn-lg'  %>
+      
+<!--         <button class="btn btn-danger btn-sm"> <a class="nav-link" style="color: white;" href="#">logout</a></button> -->
+      </li>
+      <% elsif current_user.admin? %>
+      <li class="nav-item active">
+        <%= link_to "Home", admin_dashboards_path,class: "nav-link" %>
+        <!-- <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a> -->
+      </li>
+      <li class="nav-item">
+        <%= link_to "Categories", admin_categories_path,class: "nav-link" %>
+        <!-- <a class="nav-link" href="#">Category</a> -->
+      </li>
+      <li class="nav-item">
+        <%= link_to "Requests", admin_requests_path,class: "nav-link" %>
+        <!-- <a class="nav-link" href="#">Requests</a> -->
+      </li>
+      <li class="nav-item" style="margin-left: 700px;">
+
+      <%= link_to 'Logout', logout_student_dashboards_path,remote: true, class: 'btn btn-danger btn-lg'  %>
+        <!-- <a class="nav-link" style="color: white;" href="#">logout</a> -->
+      </li>
+      <% else%> 
+
+      <% end -%>
+    </ul>
+  </div>
+</nav>
+<% end%>
+     <p class="notice"><%= notice %></p>
+     <p class="alert"><%= alert %></p>
+     <div class="container">
+<!-- 
+      <%= link_to 'Add user', logout_student_dashboards_path,remote: true, class: 'btn btn-primary btn-lg'  %> -->
+
+       <div class="show-modal"></div>
+    <%= yield %>
+       
+     </div>
+  </body>
+</html>
+  <style type="text/css">
+    .bg-custom-1 {
+  background-color: #85144b;
+}
+
+.bg-custom-2 {
+background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
+}
+  </style>

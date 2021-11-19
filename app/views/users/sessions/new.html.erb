@@ -1,0 +1,61 @@
+<div class="container">
+  <center><h1>Library Managment System</h1></center>
+   <!-- <img src="http://localhost:3000/assets/img-d1fff114e6071985931eaa429caf43306c65b467283bdaaaab498d43b24edb7e.jpg" alt="Hey"> -->
+   <!-- <%= image_tag "img.jpg" %>  -->
+    <div class="container-fluid">
+      <h2>Log in</h2>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" ,class: 'form-control'%>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "current-password",class: 'form-control' %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+
+      <div class="actions">
+        <%= f.submit "Log in", :class => 'btn btn-success'%>
+      </div>
+    <% end %>
+
+    <%= render "users/shared/links" %>
+    </div>
+</div>
+<style type="text/css">
+  body, html{
+    height: 100%;
+    margin: 0;
+    background:url('http://localhost:3000/assets/img-d1fff114e6071985931eaa429caf43306c65b467283bdaaaab498d43b24edb7e.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+  }
+  .container-fluid{
+    background: black;
+    color: white;
+    text-align: center;
+    height: 450px;
+    float: left;
+    margin-left: 30%;
+    width: 35%;
+    padding-top: 3%;
+    margin-top: 2%;
+    opacity: 0.8;
+  }
+
+  h1{
+    color: white;
+    font-family:serif;
+    font-weight: bold;
+  }
+</style>

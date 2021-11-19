@@ -1,0 +1,11 @@
+<%= form_for [:admin, @sub] do |catagerie| %>
+<%= catagerie.label :Add_subcatagery%>
+<%= catagerie.text_field :subcat%>
+<%= catagerie.fields_for :books do |f| %>
+	<%= f.label :Add_book %>
+	<%= f.text_field :book_title%>
+	<%= f.select :status, options_for_select(["Active" , "InActive"]) %>
+	<%end%>
+<%= catagerie.hidden_field :category_id, value: @category.id%>
+<%= catagerie.submit :class => 'btn btn-primary'%>
+<%end%>

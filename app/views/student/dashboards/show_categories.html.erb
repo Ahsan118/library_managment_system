@@ -1,0 +1,26 @@
+<h1>All Catergory of Books</h1>
+
+
+<table  class="table table-hover">
+	<thead>
+		<tr><th> Title</th>
+			<th>Subcategory</th>
+		</tr>
+	</thead>
+<tbody>
+	<% @category.each do |catagerie|%>
+	<tr>
+	<td><%= catagerie.title%></td>
+	<td> <%= link_to "View Subcategory And Books of #{catagerie.title}", show_subcategories_student_dashboard_path(catagerie) ,:class => 'btn btn-warning'%></td>
+	</tr>
+
+<%end%>
+</tbody>
+
+</table>
+<%= will_paginate @category,renderer: BootstrapPagination::Rails %>
+<style type="text/css">
+	body{
+		background-color: #B9B8B8;
+	}
+</style>
