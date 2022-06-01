@@ -22,6 +22,3 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-# library_managment_system
-# library_managment_system
-# library_managment_system
